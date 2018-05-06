@@ -1,0 +1,36 @@
+---
+title: "Assignment_3"
+author: "Sunil S"
+date: "11 September 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+rm(list=ls(all=TRUE))
+
+O = c(8,47,34,11)
+n=207
+E = c(21,109,62,15)
+
+degf = 3 # Sample size -1
+```
+
+### Converting sample responses to percentage as Population data (observed data) is in percentage
+```{r, include = FALSE}
+E = (E*100)/207
+
+```
+H0, Null Hypothesis is local responses from the survey are not same as expected frequencies of national survey
+H1, ALternate Hypothesis is local responses from the survey are same as expected frequencies of national survey 
+
+### Finding chisq critical value at 95% confidence level or 5% significance level
+```{r, include =FALSE}
+Chisq_crit = qchisq(p = 0.95,df = degf)
+Chisq_crit 
+```
+### Finding Chisq test statistic value
+```{r}
+Chisq_test = sum((O-E)^2/E)
+Chisq_test
+```
+As Chisq_test =3.5527 and Chisq_crit is 7.8147, Chisq_test is not in the critical region and hence we do not have enough evidence to accept Null hypothesis. That is local responses are not same as national survey. 
